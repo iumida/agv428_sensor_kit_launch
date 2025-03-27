@@ -124,10 +124,12 @@ def launch_setup(context, *args, **kwargs):
                         "sensor_ip",
                         "data_port",
                         "gnss_port",
+                        "advanced_diagnostics",
                         "return_mode",
                         "min_range",
                         "max_range",
                         "frame_id",
+                        "diag_span",
                         "scan_phase",
                         "cloud_min_angle",
                         "cloud_max_angle",
@@ -257,6 +259,7 @@ def generate_launch_description():
     common_sensor_share_dir = get_package_share_directory("common_sensor_launch")
 
     add_launch_arg("sensor_model", description="sensor model name")
+    add_launch_arg("advanced_diagnostics", "false", "advanced_diagnostics")
     add_launch_arg("config_file", "", description="sensor configuration file")
     add_launch_arg("launch_driver", "True", "do launch driver")
     add_launch_arg("setup_sensor", "True", "configure sensor")
@@ -279,6 +282,7 @@ def generate_launch_description():
     add_launch_arg("use_multithread", "False", "use multithread")
     add_launch_arg("use_intra_process", "False", "use ROS 2 component container communication")
     add_launch_arg("lidar_container_name", "nebula_node_container")
+    add_launch_arg("diag_span", "1000", "diag_span")
     add_launch_arg("output_as_sensor_frame", "True", "output final pointcloud in sensor frame")
     add_launch_arg(
         "vehicle_mirror_param_file", description="path to the file of vehicle mirror position yaml"
